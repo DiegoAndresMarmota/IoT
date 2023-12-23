@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+#Django Server
+  backend:
+    container_name: iotpython
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgresql
+      - redis
+
+  #PostgreSQL DB
+  postgresql:
+    image: postgres
+    container_name: django_api_postgresql
+    restart: always
+    environment:
+      POSTGRES_DB: iotpython_db
+      POSTGRES_USER: iotpython
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - .dbdata:/var/lib/postgresql
+
+  #Redis Cache
+  redis:
+    image: redis
+    container_name: django_api_redis
+    ports:
+      - 6379:6379
+
