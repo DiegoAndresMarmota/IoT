@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
+
 def is_turn_on_led(*args, **kwargs) -> None:
     try:
         GPIO.setmode(GPIO.BCM)
@@ -18,4 +19,3 @@ def is_turn_on_led(*args, **kwargs) -> None:
         print("Led OFF")
         time.sleep(1)
         GPIO.cleanup()
-    

@@ -1,4 +1,4 @@
-import Adafruit_DHT 
+import Adafruit_DHT
 
 DHT_SENSOR = Adafruit_DHT.DHT11
 
@@ -6,7 +6,8 @@ GPIO_PIN = 17
 
 hum, temp = Adafruit_DHT.read(DHT_SENSOR, GPIO_PIN)
 
-def environmental_sensor( hum: float, temp: float) -> List:
+
+def environmental_sensor(hum: float, temp: float) -> List:
     while true:
         try:
             if hum is not None and temp is not None:
@@ -18,6 +19,3 @@ def environmental_sensor( hum: float, temp: float) -> List:
                 continue
             else:
                 raise Exception("Failed to retrieve data from humidity sensor")
-            
-            
-    
